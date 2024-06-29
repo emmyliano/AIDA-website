@@ -6,72 +6,76 @@
     <title>Onboard Screen</title>
     <style>
         body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: url('images/background_2.jpg') no-repeat center center fixed;
-        background-size: cover;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('images/background_2.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
         .container {
-        position: relative;
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        color: white;
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
         }
         .yeti {
-        position: absolute;
-        top: 10px;
-        left: 150px;
+            position: absolute;
+            top: 10px;
+            left: 150px;
+            cursor: pointer; /* Added cursor pointer for the image */
         }
         .text-switcher {
-        position: absolute;
-        top: 250px;
-        left: 650px;
-        font-size: 50px;
-        font-weight: bold;
-        transition: opacity 0.5s;
+            position: absolute;
+            top: 250px;
+            left: 650px;
+            font-size: 50px;
+            font-weight: bold;
+            transition: opacity 0.5s;
         }
         .slider-container {
-        position: absolute;
-        bottom: 50px;
-        left: 120px;
-        width: 1000px;
-        height: 80px;
-        background: white;
-        border-radius: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+            position: absolute;
+            bottom: 50px;
+            left: 120px;
+            width: 1000px;
+            height: 80px;
+            background: white;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Added overflow to hide slider button overflow */
         }
         .slider-button {
-        position: absolute;
-        left: 0;
-        width: 350px;
-        height: 80px;
-        background: black;
-        border-radius: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: left 0.3s;
+            position: absolute;
+            left: 0;
+            width: 350px;
+            height: 80px;
+            background: black;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out; /* Changed transition to transform */
         }
         .slider-button i {
-        color: white;
-        font-size: 24px;
+            color: white;
+            font-size: 24px;
         }
     </style>
-    </head>
-    <body>
+</head>
+<body>
     <div class="container">
-        <img src="images/young_yeti.png" class="yeti" alt="Yeti">
+        <a href="404.html"> <!-- Added anchor tag around the image for navigation -->
+            <img src="images/young_yeti.png" class="yeti" alt="Yeti">
+        </a>
         <div id="textSwitcher" class="text-switcher">Hi, I'm Aida!</div>
         <div class="slider-container">
-        <div class="slider-button" id="sliderButton"><i class="arrow right"></i></div>
-        <div style="position: absolute; text-align: center; width: 100%; color: black; font-weight: bold; font-size: 24px; font-family: 'Times New Roman', Times, serif;">Discover</div>
+            <div class="slider-button" id="sliderButton"><i class="arrow right"></i></div>
+            <div style="position: absolute; text-align: center; width: 100%; color: black; font-weight: bold; font-size: 24px; font-family: 'Times New Roman', Times, serif;">Discover</div>
         </div>
     </div>
 
@@ -80,45 +84,63 @@
         const textSwitcher = document.getElementById('textSwitcher');
         const sliderButton = document.getElementById('sliderButton');
         const buttonWidth = 1000;
-        let dragPosition = 0;
+        const sliderContainer = document.querySelector('.slider-container');
+        let isSliderMoved = false;
 
+        // Interval function to switch text
         setInterval(() => {
-        showFirstText = !showFirstText;
-        textSwitcher.style.opacity = 0;
-        setTimeout(() => {
-            textSwitcher.innerText = showFirstText ? "Hi, I'm Aida!" : "Your virtual chat friend";
-            textSwitcher.style.opacity = 1;
-        }, 500);
+            showFirstText = !showFirstText;
+            textSwitcher.style.opacity = 0;
+            setTimeout(() => {
+                textSwitcher.innerText = showFirstText ? "Hi, I'm Aida!" : "Your virtual chat friend";
+                textSwitcher.style.opacity = 1;
+            }, 500);
         }, 3000);
 
-        sliderButton.addEventListener('mousedown', (e) => {
-        const onMouseMove = (e) => {
-            dragPosition = e.clientX - sliderButton.offsetWidth / 2;
-            if (dragPosition < 0) dragPosition = 0;
-            if (dragPosition > buttonWidth - sliderButton.offsetWidth) dragPosition = buttonWidth - sliderButton.offsetWidth;
-            sliderButton.style.left = dragPosition + 'px';
-        };
-
-        const onMouseUp = () => {
-            if (dragPosition > buttonWidth / 2) {
-            sliderButton.style.left = buttonWidth - sliderButton.offsetWidth + 'px';
-            performAction();
-            } else {
-            sliderButton.style.left = 0;
+        // Function to move slider to end and navigate
+        function moveSliderAndNavigate() {
+            if (!isSliderMoved) {
+                sliderButton.style.transform = `translateX(${buttonWidth - 350}px)`;
+                setTimeout(() => {
+                    window.location.href = '404.html'; // Change this to the desired URL
+                }, 500); // Adjust timing for animation completion
+                isSliderMoved = true;
             }
-            document.removeEventListener('mousemove', onMouseMove);
-            document.removeEventListener('mouseup', onMouseUp);
-        };
+        }
 
-        document.addEventListener('mousemove', onMouseMove);
-        document.addEventListener('mouseup', onMouseUp);
+        // Event listener for clicking the slider button to navigate
+        sliderButton.addEventListener('click', moveSliderAndNavigate);
+
+        // Event listener for clicking the Yeti image to navigate
+        const yetiImage = document.querySelector('.yeti');
+        yetiImage.addEventListener('click', () => {
+            window.location.href = 'first_screen.html'; // Change this to the desired URL
         });
 
-        function performAction() {
-        setTimeout(() => {
-            window.location.href = '404.html'; // Change this to the desired URL
-        }, 300);
-    }
+        // Optional: Handle touch events for mobile devices
+        let initialX = null;
+        let finalX = null;
+
+        sliderButton.addEventListener('touchstart', function(e) {
+            initialX = e.touches[0].clientX;
+        });
+
+        sliderButton.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+            finalX = e.touches[0].clientX;
+            const differenceX = finalX - initialX;
+            sliderButton.style.transform = `translateX(${differenceX}px)`;
+        });
+
+        sliderButton.addEventListener('touchend', function(e) {
+            if (finalX - initialX > buttonWidth / 2) {
+                moveSliderAndNavigate();
+            } else {
+                sliderButton.style.transform = 'translateX(0)';
+            }
+            initialX = null;
+            finalX = null;
+        });
     </script>
 </body>
 </html>
