@@ -73,6 +73,14 @@
             color: white;
             font-size: 24px;
         }
+        .slider-arrow {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -90,13 +98,17 @@
         </a>
         <div id="textSwitcher" class="text-switcher">Hi, I'm Aida!</div>
         <div class="slider-container">
-            <div class="slider-button" id="sliderButton"><i class="arrow right"></i></div>
+            <div class="slider-button" id="sliderButton">
+                <i class="arrow right"></i>
+                <div class="slider-arrow">&#8594;</div>
+            </div>
             <div style="position: absolute; text-align: center; width: 100%; color: black; font-weight: bold; font-size: 24px; font-family: 'Times New Roman', Times, serif;">Discover</div>
         </div>
     </div>
 
     <script>
-        let showFirstText = true;
+        let texts = ["Hi, I'm Aida!", "Your virtual chat friend", "AIDA means ...", "Artificial Intelligent Digital Assistant", "Cool right?"];
+        let currentTextIndex = 0;
         const textSwitcher = document.getElementById('textSwitcher');
         const sliderButton = document.getElementById('sliderButton');
         const buttonWidth = 1000;
@@ -105,10 +117,10 @@
 
         // Interval function to switch text
         setInterval(() => {
-            showFirstText = !showFirstText;
+            currentTextIndex = (currentTextIndex + 1) % texts.length;
             textSwitcher.style.opacity = 0;
             setTimeout(() => {
-                textSwitcher.innerText = showFirstText ? "Hi, I'm Aida!" : "Your virtual chat friend";
+                textSwitcher.innerText = texts[currentTextIndex];
                 textSwitcher.style.opacity = 1;
             }, 500);
         }, 3000);
