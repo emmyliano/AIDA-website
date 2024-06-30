@@ -1,14 +1,11 @@
-//Hook up the tweet display
+// Hook up the tweet display
 
 $(document).ready(function() {
-                           
     $(".countdown").countdown({
-                date: "12 March 2024 18:30:00",
-                format: "on"
-            },
-            
-            function() {
-                // callback function
-            });
-
-}); 
+        date: "15 July 2024 12:00:00", // Set your desired date and time here
+        format: "on"
+    },
+    function() {
+        // callback function
+    });
+});
