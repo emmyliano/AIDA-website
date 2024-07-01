@@ -93,7 +93,7 @@
     </div>
     
     <div class="container">
-        <a href="404.html"> <!-- Added anchor tag around the image for navigation -->
+        <a href="user-media.html"> <!-- Added anchor tag around the image for navigation -->
             <img src="images/young_yeti.png" class="yeti" alt="Yeti">
         </a>
         <div id="textSwitcher" class="text-switcher">Hi, I'm Aida!</div>
@@ -130,7 +130,7 @@
             if (!isSliderMoved) {
                 sliderButton.style.transform = `translateX(${buttonWidth - 350}px)`;
                 setTimeout(() => {
-                    window.location.href = '404.html'; // Change this to the desired URL
+                    window.location.href = 'user-media.html'; // Change this to the desired URL
                 }, 500); // Adjust timing for animation completion
                 isSliderMoved = true;
             }
@@ -142,7 +142,7 @@
         // Event listener for clicking the Yeti image to navigate
         const yetiImage = document.querySelector('.yeti');
         yetiImage.addEventListener('click', () => {
-            window.location.href = 'first_screen.html'; // Change this to the desired URL
+            window.location.href = 'user-media.html'; // Change this to the desired URL
         });
 
         // Optional: Handle touch events for mobile devices

@@ -1,0 +1,21 @@
+body {
+    background-image: url('images/lite-bg.jpeg');
+    background-size: cover; /* Ensures the background image covers the entire page */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background: rgba(255, 255, 255, 0.8); /* Optional: A white background with some transparency */
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8); /* Optional: A white background with some transparency */
+    margin: 20px;
+    border-radius: 10px;
+}
