@@ -12,7 +12,7 @@
         <meta name="author" content="">
 
         <!-- Document title -->
-        <title>Kool Form Pack | Register or Create an account</title>
+        <title>AIDA | Register or Create an account</title>
 
         <!-- Preconnect to Google Fonts for performance improvement -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,11 +51,6 @@
                             <!-- Social media icons -->
                             <ul class="social-icon d-flex justify-content-center align-items-center mx-auto">
                                 <span class="text-white me-4 d-none d-lg-block">Connect with us</span>
-
-                                <li class="social-icon-item">
-                                    <!-- Link to Instagram -->
-                                    <a href="#" class="social-icon-link bi-instagram"></a>
-                                </li>
                                 
                                 <li class="social-icon-item">
                                     <!-- Link to Twitter -->
@@ -64,7 +59,7 @@
 
                                 <li class="social-icon-item">
                                     <!-- Link to Email -->
-                                    <a href="mailto:example@example.com" class="social-icon-link bi-envelope"></a>
+                                    <a href="mailto:akemuemmy2@gmail.com" class="social-icon-link bi-envelope"></a>
                                 </li>
                                 
                                 <li class="social-icon-item">
@@ -73,13 +68,8 @@
                                 </li>
 
                                 <li class="social-icon-item">
-                                    <!-- Link to Facebook -->
-                                    <a href="https://www.facebook.com/your-profile" class="social-icon-link bi-facebook"></a>
-                                </li>
-
-                                <li class="social-icon-item">
                                     <!-- Link to LinkedIn -->
-                                    <a href="https://www.linkedin.com/in/your-profile" class="social-icon-link bi-linkedin"></a>
+                                    <a href="https://www.linkedin.com/in/emmanuel-akemu" class="social-icon-link bi-linkedin"></a>
                                 </li>
                             </ul>
 
@@ -108,10 +98,7 @@
                         <ul>
                             <!-- Navigation links -->
                             <li>
-                                <a href="login.html">Login Form</a>
-                            </li>
-                            <li>
-                                <a class="active" href="register.html">Create an account</a>
+                                <a href="login.html">Login</a>
                             </li>
                             <li>
                                 <a href="password-reset.html">Password Reset</a>
@@ -151,7 +138,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6 col-12 mx-auto">
-                            <form class="custom-form" role="form" method="post">
+                            <form class="custom-form" role="form" method="post" id="submitForm">
                                 <h2 class="hero-title text-center mb-4 pb-2">Create an account</h2>
 
                                 <div class="row">
@@ -180,7 +167,7 @@
 
                                         <!-- Terms and Privacy Policy checkbox -->
                                         <div class="form-check mb-4">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                            <input class="form-check-input" required="" type="checkbox" value="" id="flexCheckDefault">
                                             <label class="form-check-label" for="flexCheckDefault">
                                                 I agree to the Terms of Service and Privacy Policy.
                                             </label>
@@ -188,9 +175,9 @@
                                     </div>
 
                                     <div class="row justify-content-center align-items-center">
-                                        <div class="col-lg-5 col-md-5 col-5 ms-auto">
-                                            <!-- Submit button -->
-                                            <button type="submit" class="form-control">Submit</button>
+                                        <div class="col-lg-5 col-12">
+                                            <!-- Remove type="button" and use type="submit" to trigger form submission -->
+                                            <button type="submit" class="form-control" id="submitButton">Submit</button>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-7">
                                             <p class="mb-0">Already have an account? <a href="login.html" class="ms-2">Login</a></p>
@@ -217,5 +204,34 @@
         <script src="js/bootstrap.bundle.min.js"></script>
         <script src="js/countdown.js"></script>
         <script src="js/init.js"></script>
+
+        <!-- Script for smooth transition -->
+    <script>
+        // Wait for the document to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Select the login form by its ID
+            const form = document.getElementById('submitForm');
+
+            // Add submit event listener to the form
+            form.addEventListener('submit', function(event) {
+                // Prevent the form from submitting by default
+                event.preventDefault();
+
+                // Get the values entered by the user
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                window.location.href = 'first_screen.html';
+
+                // Check if email and password match the expected values
+                //if (email === 'admin@aida.com' && password === 'videochatbot') {
+                    // Redirect to first_screen.html with a smooth transition effect
+                    //window.location.href = 'first_screen.html';
+                //} else {
+                    // Display an error message or handle invalid credentials here
+                    //document.getElementById('error-message').classList.remove('d-none');
+                //}
+            });
+        });
+    </script>
     </body>
 </html
