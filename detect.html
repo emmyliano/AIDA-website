@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Processing...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <style>
+        body {
+            background-image: url('images/aida-yeti.jpg');
+            background-size: cover;
+            color: white;
+            text-align: center;
+            font-size: 2em;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .message {
+            display: none;
+        }
+        .result {
+            display: none;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="messages">
+            <div class="message">Checking image...</div>
+            <div class="message">.</div>
+            <div class="message">..</div>
+            <div class="message">...</div>
+            <div class="message">Detecting face...</div>
+            <div class="message">.</div>
+            <div class="message">..</div>
+            <div class="message">...</div>
+            <div class="message">Drawing mask...</div>
+            <div class="message">.</div>
+            <div class="message">..</div>
+            <div class="message">...</div>
+            <div class="message">Passing data to model...</div>
+            <div class="message">.</div>
+            <div class="message">..</div>
+            <div class="message">...</div>
+            <div class="message">Finishing up...</div>
+            <div class="message">.</div>
+            <div class="message">..</div>
+            <div class="message">...</div>
+            <div class="message">.</div>
+            <div class="message">..</div>
+            <div class="message">...</div>
+            <div class="message">.</div>
+            <div class="message">..</div>
+            <div class="message">...</div>
+            <div class="message">.</div>
+            <div class="message">..</div>
+            <div class="message">...</div>
+            <div class="message">.</div>
+            <div class="message">..</div>
+            <div class="message">...</div>
+        </div>
+        <div id="result" class="result">
+            <p>Detected Neutral face… 😐</p>
+            <p>Detected Happy face… 😃</p>
+            <p>Detected Sad face… 😢</p>
+            <p>Detected Neutral face… 😐</p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const messages = document.querySelectorAll('.message');
+            let index = 0;
+
+            const showNextMessage = () => {
+                if (index > 0) {
+                    messages[index - 1].style.display = 'none';
+                }
+                if (index < messages.length) {
+                    messages[index].style.display = 'block';
+                    index++;
+                    setTimeout(showNextMessage, 1500); // 15 seconds between messages
+                } else {
+                    document.getElementById('result').style.display = 'block';
+                }
+            };
+
+            showNextMessage();
+        });
+    </script>
+</body>
+</html>

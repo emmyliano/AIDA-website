@@ -23,9 +23,13 @@
             <button id="btnStop" class="btn btn-danger btn-lg">
                 <i class="fas fa-square" style="color: black;"></i> Stop Recording
             </button>
+            <button id="btnDownload" class="btn btn-success btn-lg" style="display:none;">
+                <i class="fas fa-download"></i> Download Video
+            </button>
+            <button id="btnDetect" class="btn btn-warning btn-lg" style="display:none;">
+                <i class="fas fa-robot"></i> Detect Faces
+            </button>
         </div>
-        
-        <!-- white spacing -->
         <p></p>
         <video controls></video>
         <video id="vid2" controls></video>
@@ -41,7 +45,6 @@
             }
         };
 
-        // handle older browsers that might implement getUserMedia in some way
         if (navigator.mediaDevices === undefined) {
             navigator.mediaDevices = {};
             navigator.mediaDevices.getUserMedia = function(constraintObj) {
@@ -78,9 +81,10 @@
                     video.play();
                 };
 
-                //add listeners for saving video/audio
                 let start = document.getElementById('btnStart');
                 let stop = document.getElementById('btnStop');
+                let download = document.getElementById('btnDownload');
+                let detect = document.getElementById('btnDetect');
                 let vidSave = document.getElementById('vid2');
                 let mediaRecorder = new MediaRecorder(mediaStreamObj);
                 let chunks = [];
@@ -101,23 +105,27 @@
                     chunks = [];
                     let videoURL = window.URL.createObjectURL(blob);
                     vidSave.src = videoURL;
+
+                    // Show download and detect buttons
+                    download.style.display = 'inline-block';
+                    detect.style.display = 'inline-block';
+
+                    download.addEventListener('click', () => {
+                        const a = document.createElement('a');
+                        a.href = videoURL;
+                        a.download = 'recorded_video.mp4';
+                        a.click();
+                    });
+
+                    detect.addEventListener('click', () => {
+                        alert('Please wait...');
+                        window.location.href = 'detect.html';
+                    });
                 };
             })
             .catch(function(err) {
                 console.log(err.name, err.message);
             });
-
-        /************************
-        getUserMedia returns a Promise
-        resolve - returns a MediaStream Object
-        reject returns one of the following errors
-        AbortError - generic unknown cause
-        NotAllowedError (SecurityError) - user rejected permissions
-        NotFoundError - missing media track
-        NotReadableError - user permissions given but hardware/OS error
-        OverconstrainedError - constraint video settings preventing
-        TypeError - audio: false, video: false
-        /************************/
     </script>
 </body>
 </html>
