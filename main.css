@@ -19,3 +19,14 @@ main {
     margin: 20px;
     border-radius: 10px;
 }
+
+.btn-container {
+    display: flex;
+    gap: 10px; /* Optional: space between the buttons */
+}
+
+#btnStart {
+    margin-right: 50px; /* Adjust the value to increase/decrease the space */
+
+}
+

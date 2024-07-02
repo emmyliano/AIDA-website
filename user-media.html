@@ -2,20 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MediaCapture and Streams API</title>
+    <title>Facial Recognition with AIDA</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Include Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <header>
-        <h1>MediaCapture and Streams API</h1>
+        <h1>Facial Recognition with AIDA</h1>
     </header>
     <main>
-        <p>Record Video and Download File</p>
-        <p>
-            <button id="btnStart">START RECORDING</button><br>
-            <button id="btnStop">STOP RECORDING</button>
-        </p>
+        <p>Record Video and Send for Processing</p>
+        <div class="btn-container">
+            <button id="btnStart" class="btn btn-primary btn-lg">
+                <i class="fas fa-circle" style="color: red;"></i> Start Recording
+            </button>
+            <button id="btnStop" class="btn btn-danger btn-lg">
+                <i class="fas fa-square" style="color: black;"></i> Stop Recording
+            </button>
+        </div>
+        
+        <!-- white spacing -->
+        <p></p>
         <video controls></video>
         <video id="vid2" controls></video>
         <!-- could save to canvas and do image manipulation and saving too -->
