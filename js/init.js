@@ -2,7 +2,7 @@
 
 $(document).ready(function() {
     $(".countdown").countdown({
-        date: "15 August 2024 12:00:00", // Set your desired date and time here
+        date: "15 September 2024 12:00:00", // Set your desired date and time here
         format: "on"
     },
     function() {
