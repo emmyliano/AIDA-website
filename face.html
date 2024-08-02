@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="face-api.min.js"></script>
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-image: url('images/lite-bg.jpeg'); /* Replace with your image */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        #video {
+            display: block;
+            border-radius: 15px; /* Rounded corners for video */
+            border: 5px solid #fff; /* Optional: add a border for better visibility */
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        #start-btn {
+            background-color: green;
+        }
+        #stop-btn {
+            background-color: red;
+        }
+        .loading-dots {
+            display: none;
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+        }
+        .dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: transparent;
+            border: 3px solid;
+            animation: dot-blink 1.5s infinite;
+        }
+        .dot:nth-child(1) {
+            border-color: blue;
+            animation-delay: 0s;
+        }
+        .dot:nth-child(2) {
+            border-color: red;
+            animation-delay: 0.5s;
+        }
+        .dot:nth-child(3) {
+            border-color: green;
+            animation-delay: 1s;
+        }
+        @keyframes dot-blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <video id="video" width="640" height="480" autoplay muted></video>
+    <div class="controls">
+        <button id="start-btn" class="btn">Start Facial Recognition</button>
+        <button id="stop-btn" class="btn">Stop Facial Recognition</button>
+    </div>
+    <div class="loading-dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+</body>
+</html>
