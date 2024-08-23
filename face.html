@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Facial Recognition</title>
     <script defer src="face-api.min.js"></script>
     <script defer src="script.js"></script>
+    <script defer src="/voice-synthesis/index.js"></script>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
-            background-image: url('images/lite-bg.jpeg'); /* Replace with your image */
+            background-image: url('images/lite-bg.jpeg');
             background-size: cover;
             background-position: center;
             margin: 0;
@@ -22,8 +23,8 @@
         }
         #video {
             display: block;
-            border-radius: 15px; /* Rounded corners for video */
-            border: 5px solid #fff; /* Optional: add a border for better visibility */
+            border-radius: 15px;
+            border: 5px solid #fff;
         }
         .controls {
             position: absolute;
@@ -45,6 +46,17 @@
         }
         #stop-btn {
             background-color: red;
+        }
+        #voice-btn {
+            background-color: blue;
+        }
+        #mic-icon {
+            display: none;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 50px;
+            height: 50px;
         }
         .loading-dots {
             display: none;
@@ -90,7 +102,9 @@
     <div class="controls">
         <button id="start-btn" class="btn">Start Facial Recognition</button>
         <button id="stop-btn" class="btn">Stop Facial Recognition</button>
+        <button id="voice-btn" class="btn">Voice Command</button>
     </div>
+    <img id="mic-icon" src="images/mic-icon.jpg" alt="Microphone Icon"> <!-- Add an icon to indicate the mic status -->
     <div class="loading-dots">
         <div class="dot"></div>
         <div class="dot"></div>

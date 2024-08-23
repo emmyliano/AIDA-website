@@ -10,6 +10,7 @@ fetch('commands.json')
   .catch(error => console.error('Error loading commands:', error));
 
 const voiceBtn = document.querySelector("#voice-btn");
+const micIcon = document.querySelector("#mic-icon");
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
 let recognition;
@@ -27,6 +28,14 @@ if (SpeechRecognition) {
       recognition.start();
     }
   });
+
+  recognition.onstart = () => {
+    micIcon.style.display = 'block'; // Show mic icon when listening
+  };
+
+  recognition.onend = () => {
+    micIcon.style.display = 'none'; // Hide mic icon when not listening
+  };
 
   recognition.onresult = (e) => {
     const transcript = e.results[e.results.length - 1][0].transcript.trim().toLowerCase();
