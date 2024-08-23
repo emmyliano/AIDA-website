@@ -15,6 +15,7 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
 
 let recognition;
 let synth = window.speechSynthesis;
+let selectedVoice;
 
 if (SpeechRecognition) {
   recognition = new SpeechRecognition();
@@ -41,6 +42,11 @@ if (SpeechRecognition) {
     const transcript = e.results[e.results.length - 1][0].transcript.trim().toLowerCase();
     let utter = new SpeechSynthesisUtterance();
 
+    // Set the voice to the selected voice
+    if (selectedVoice) {
+      utter.voice = selectedVoice;
+    }
+
     if (transcript in commands) {
       recognition.stop();
       utter.text = commands[transcript];
@@ -50,12 +56,10 @@ if (SpeechRecognition) {
       utter.text = "I didn't catch that. Could you please repeat?";
       synth.speak(utter);
     }
-  };
 
-  utter.onend = () => {
-    if (recognition) {
-      recognition.start();
-    }
+    utter.onend = () => {
+      recognition.start(); // Restart voice recognition after the response
+    };
   };
 
   recognition.onerror = (event) => {
@@ -77,3 +81,12 @@ document.getElementById("stop-btn").addEventListener("click", () => {
     recognition.stop();
   }
 });
+
+// Load available voices and set a default voice
+window.speechSynthesis.onvoiceschanged = () => {
+  const voices = synth.getVoices();
+  // console.log(voices); // Display available voice options
+  
+  // Select a voice based on your preference, e.g., selecting an English-speaking female voice
+  selectedVoice = voices.find(voice => voice.name.includes('Google UK English Female')) || voices[0]; // Fallback to the first voice if not found
+};
