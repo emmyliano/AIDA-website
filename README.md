@@ -1,6 +1,7 @@
-# FaceTech: Advanced Facial Recognition & Voice Assistant Web Application
+# AIDA: Advanced Interactive Digital Assistant
+## An Advanced Facial Recognition & Voice Assistant Web Application
 
-Welcome to **FaceTech**! This project was initially developed as part of my assignment for the CPE593 course during my final year in Computer Engineering. However, it's now open source for anyone to explore, use, and build upon. The website combines cutting-edge facial recognition technology with a robust voice assistant, creating a seamless, interactive user experience.
+Welcome to **AIDA**! This project was initially developed as part of my assignment for the CPE593 course during my final year in Computer Engineering. However, it's now open source for anyone to explore, use, and build upon. The website combines cutting-edge facial recognition technology with a robust voice assistant, creating a seamless, interactive user experience.
 
 ## Features
 - **Real-Time Facial Recognition**: Utilize face-api.js to detect faces, landmarks, expressions, and even estimate age and gender.
@@ -52,4 +53,4 @@ Contributions are welcome! Feel free to fork the repository, make your changes, 
 ## License
 This project is open-source and available under the **MIT License**.
 
-**FaceTech** is more than just an academic project—it's a powerful, flexible foundation for innovative applications. Dive in, explore, and make it your own!
+**AIDA** is more than just an academic project—it's a powerful, flexible foundation for innovative applications. Dive in, explore, and make it your own!
